@@ -16,6 +16,12 @@ RSpec.describe AddressBook do
         book_size = book.entries.size
         expect(book_size).to eq 5
     end
+
+    it "imports the correct number of entries from another file" do
+        book.import_from_csv("entries_2.csv")
+        book_size = book.entries.size
+        expect(book_size).to eq 3
+    end
   end
 
   describe "attributes" do
@@ -49,6 +55,12 @@ RSpec.describe AddressBook do
         book.import_from_csv("entries.csv")
         entry_five = book.entries[4]
         check_entry(entry_five, "Sussie", "555-555-2036", "sussie@blocmail.com")
+    end
+
+    it "imports entries from a second file" do
+        book.import_from_csv("entries_2.csv")
+        entry_second_file = book.entries[1]
+        check_entry(entry_second_file, "Sanyan", "555-555-4854", "sanyan@blocmail.com")
     end
         
     it "initializes entry as an array" do
