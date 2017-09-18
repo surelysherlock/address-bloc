@@ -147,5 +147,4 @@ describe "#binary_search" do
         expect(entry).to be_nil
     end
   end
-
 end
